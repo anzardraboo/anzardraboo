@@ -114,6 +114,7 @@ const HeroSection = () => {
           </Button>
           <Button
             variant="outline"
+            onClick={() => window.open("https://www.linkedin.com/in/anzardraboo/", "_blank")}
             className="border-blue-400 text-blue-400 hover:bg-blue-400 hover:text-slate-900 px-6 py-3 rounded-full text-lg font-medium transition-all duration-300 transform hover:scale-105"
           >
             <Linkedin className="w-5 h-5 mr-2" />
