@@ -79,10 +79,11 @@ const CertificationsSection = () => {
           featured: true
         },
         {
-          name: "AWS Fundamentals",
-          issuer: "AWS",
-          year: "2023",
-          type: "Course"
+          name: "AWS Certified AI Practitioner",
+          issuer: "Amazon Web Services",
+          year: "2024",
+          type: "Professional",
+          featured: true
         }
       ]
     },
