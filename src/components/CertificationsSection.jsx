@@ -83,7 +83,8 @@ const CertificationsSection = () => {
           issuer: "Amazon Web Services",
           year: "2025",
           type: "Professional",
-          featured: true
+          featured: true,
+          verifyLink: "https://www.credly.com/badges/9907e321-2495-4346-8d06-4468d6cec912/public_url"
         }
       ]
     },
@@ -237,7 +238,11 @@ const CertificationsSection = () => {
 
                         {/* Verify Button */}
                         <div className="mt-4 pt-4 border-t border-slate-600">
-                          <button className="w-full flex items-center justify-center gap-2 text-cyan-400 hover:text-white text-sm font-medium transition-colors duration-300">
+                          <button
+                            className="w-full flex items-center justify-center gap-2 text-cyan-400 hover:text-white text-sm font-medium transition-colors duration-300"
+                            onClick={() => cert.verifyLink && window.open(cert.verifyLink, "_blank")}
+                            disabled={!cert.verifyLink}
+                          >
                             <ExternalLink className="w-4 h-4" />
                             Verify Credential
                           </button>
