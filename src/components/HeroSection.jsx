@@ -67,7 +67,7 @@ const HeroSection = () => {
             Senior Data Scientist & AI Consultant
           </h2>
           <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto leading-relaxed">
-            Transforming Business Challenges into AI-Driven Solutions with 5+ Years of Excellence
+            Driving Business Modernisation Through Scalable Artificial Intelligence, Machine Learning, and Data-Driven Intelligence
           </p>
         </motion.div>
 
