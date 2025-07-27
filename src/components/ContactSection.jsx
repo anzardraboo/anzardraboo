@@ -11,6 +11,8 @@ const ContactSection = () => {
     subject: '',
     message: ''
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitMessage, setSubmitMessage] = useState('');
 
   const handleInputChange = (e) => {
     setFormData({
@@ -19,11 +21,32 @@ const ContactSection = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log('Form submitted:', formData);
-    // You can integrate with email service or backend API
+    setIsSubmitting(true);
+    setSubmitMessage('');
+
+    try {
+      const response = await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams({
+          'form-name': 'contact',
+          ...formData
+        }).toString()
+      });
+
+      if (response.ok) {
+        setSubmitMessage('Thank you! Your message has been sent successfully.');
+        setFormData({ name: '', email: '', subject: '', message: '' });
+      } else {
+        setSubmitMessage('Sorry, there was an error sending your message. Please try again.');
+      }
+    } catch (error) {
+      setSubmitMessage('Sorry, there was an error sending your message. Please try again.');
+    }
+
+    setIsSubmitting(false);
   };
 
   const contactInfo = [
@@ -111,7 +134,23 @@ const ContactSection = () => {
                   Send me a message
                 </h3>
                 
-                <form onSubmit={handleSubmit} className="space-y-6">
+                <form 
+                  onSubmit={handleSubmit} 
+                  className="space-y-6"
+                  name="contact"
+                  method="POST"
+                  data-netlify="true"
+                  data-netlify-honeypot="bot-field"
+                >
+                  {/* Hidden input for Netlify */}
+                  <input type="hidden" name="form-name" value="contact" />
+                  
+                  {/* Honeypot field for spam protection */}
+                  <div style={{ display: 'none' }}>
+                    <label>
+                      Don't fill this out if you're human: <input name="bot-field" />
+                    </label>
+                  </div>
                   <div className="grid md:grid-cols-2 gap-4">
                     <div>
                       <label className="block text-gray-300 text-sm font-medium mb-2">
@@ -173,12 +212,24 @@ const ContactSection = () => {
                     />
                   </div>
                   
+                  {/* Submit Message */}
+                  {submitMessage && (
+                    <div className={`p-4 rounded-lg ${
+                      submitMessage.includes('Thank you') 
+                        ? 'bg-green-500/20 text-green-400 border border-green-500/30' 
+                        : 'bg-red-500/20 text-red-400 border border-red-500/30'
+                    }`}>
+                      {submitMessage}
+                    </div>
+                  )}
+                  
                   <Button
                     type="submit"
-                    className="w-full bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white py-3 rounded-lg font-medium transition-all duration-300 transform hover:scale-105"
+                    disabled={isSubmitting}
+                    className="w-full bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white py-3 rounded-lg font-medium transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
                   >
                     <Send className="w-5 h-5 mr-2" />
-                    Send Message
+                    {isSubmitting ? 'Sending...' : 'Send Message'}
                   </Button>
                 </form>
               </CardContent>
