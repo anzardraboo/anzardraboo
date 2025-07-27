@@ -173,17 +173,7 @@ const ProjectsSection = () => {
                     </ul>
                   </div>
 
-                  {/* Action Buttons */}
-                  <div className="flex gap-2 mt-auto">
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      className="flex-1 border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-slate-900 transition-all duration-300"
-                    >
-                      <ExternalLink className="w-4 h-4 mr-2" />
-                      View Details
-                    </Button>
-                  </div>
+
                 </CardContent>
               </Card>
             </motion.div>
