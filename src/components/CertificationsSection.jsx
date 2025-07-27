@@ -60,28 +60,28 @@ const CertificationsSection = () => {
         {
           name: "AWS Certified Cloud Practitioner",
           issuer: "Amazon Web Services",
-          year: "2024",
+          year: "2025",
           type: "Professional",
           featured: true
         },
         {
           name: "AWS Machine Learning Engineer - Associate",
           issuer: "Amazon Web Services",
-          year: "2024",
+          year: "2025",
           type: "Professional",
           featured: true
         },
         {
           name: "Microsoft Certified: Fabric Data Engineer Associate",
           issuer: "Microsoft",
-          year: "2024",
+          year: "2025",
           type: "Professional",
           featured: true
         },
         {
           name: "AWS Certified AI Practitioner",
           issuer: "Amazon Web Services",
-          year: "2024",
+          year: "2025",
           type: "Professional",
           featured: true
         }
@@ -264,8 +264,8 @@ const CertificationsSection = () => {
             Committed to Continuous Learning
           </h3>
           <p className="text-gray-300 max-w-2xl mx-auto">
-            I believe in staying at the forefront of technology through continuous education and professional development. 
-            These certifications represent my commitment to excellence and expertise in the rapidly evolving field of AI and data science.
+            I am committed to staying at the forefront of innovation through continuous learning and professional growth. 
+            These certifications reflect my dedication to maintaining technical excellence and deepening expertise in the dynamic landscape of AI and data science.
           </p>
         </motion.div>
       </div>
